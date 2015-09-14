@@ -1,5 +1,5 @@
-/*@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic);*/
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import 'palette';
 
 body {
   font-family: "Lato", sans-serif;
@@ -7,7 +7,7 @@ body {
   top: 0;
   bottom: 0;
   width: 100%;
-  background-color: #FAFAFA;
+  background-color: $bg;
 }
 
 
@@ -25,11 +25,11 @@ body {
 .animate {
   transition: all 0.2s;
 }
-.keyline-left { border-left: 1px solid #CCC; }
-.keyline-right { border-right: 1px solid #CCC; }
-.keyline-top { border-top: 1px solid #CCC; }
-.keyline-bottom { border-bottom: 1px solid #CCC; }
-.keyline-all { border: 1px solid #CCC; }
+.keyline-left { border-left: 1px solid $quiet; }
+.keyline-right { border-right: 1px solid $quiet; }
+.keyline-top { border-top: 1px solid $quiet; }
+.keyline-bottom { border-bottom: 1px solid $quiet; }
+.keyline-all { border: 1px solid $quiet; }
 
 
 /*******************/
@@ -37,10 +37,10 @@ body {
 /*******************/
 a {
   text-decoration: none;
-  color: #888;
+  color: $link;
   }
   a:hover {
-    color: #333;
+    color: $link-hover;
     text-decoration: underline;
   }
 
@@ -105,7 +105,7 @@ header {
     color: #FFF;
   }
   header.active li a,
-  header:hover li a{ 
+  header:hover li a{
     color: #333 ;
   }
 
@@ -130,9 +130,9 @@ header {
     height: 100%;
     /*transition: opacity 0.6s ease;*/
   }
-  .page h2 { 
+  .page h2 {
     color: #EEE;
-    font-size: 16rem;
+    font-size: 10rem;
     font-weight: 100;
     letter-spacing: 14px;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);

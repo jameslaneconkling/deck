@@ -1,38 +1,31 @@
-/*global haunt, Backbone, JST*/
+var Backbone = require('backbone');
 
-haunt.Views = haunt.Views || {};
+module.exports = Backbone.View.extend({
 
-(function () {
-  'use strict';
+  template: require('../templates/footer.hbs'),
 
-  haunt.Views.FooterView = Backbone.View.extend({
+  tagName: 'footer',
 
-    template: JST['app/scripts/templates/footer.ejs'],
+  className: 'animate',
 
-    tagName: 'footer',
+  events: {},
 
-    className: 'animate',
+  initialize: function () {
+    this.listenTo(this.model, 'showHeader', this.show);
+    this.listenTo(this.model, 'hideHeader', this.hide);
+  },
 
-    events: {},
+  show: function(){
+    this.$el.addClass('active');
+  },
 
-    initialize: function () {
-      this.listenTo(this.model, 'showHeader', this.show);
-      this.listenTo(this.model, 'hideHeader', this.hide);
-    },
+  hide: function(){
+    this.$el.removeClass('active');
+  },
 
-    show: function(){
-      this.$el.addClass('active');
-    },
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this.$el;
+  }
 
-    hide: function(){
-      this.$el.removeClass('active');
-    },
-
-    render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
-      return this.$el;
-    }
-
-  });
-
-})();
+});

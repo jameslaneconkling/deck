@@ -10,7 +10,6 @@ For a great overview of how to think about scroll navigation, read [How to Scrol
 
 ```
 npm install
-bower install
 ```
 
 ### Development

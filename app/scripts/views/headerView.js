@@ -1,39 +1,31 @@
-/*global haunt, Backbone, JST*/
+var Backbone = require('backbone');
 
-haunt.Views = haunt.Views || {};
+module.exports = Backbone.View.extend({
 
-(function () {
-  'use strict';
+  template: require('../templates/header.hbs'),
 
-  haunt.Views.HeaderView = Backbone.View.extend({
+  tagName: 'header',
 
-    template: JST['app/scripts/templates/header.ejs'],
+  className: 'animate',
 
-    tagName: 'header',
+  initialize: function () {
+    console.log('asdfasdfasdf')
+    this.listenTo(this.model, 'change:user', this.render);
+    this.listenTo(this.model, 'showHeader', this.show);
+    this.listenTo(this.model, 'hideHeader', this.hide);
+  },
 
-    className: 'animate',
+  show: function(){
+    this.$el.addClass('active');
+  },
 
-    events: {},
+  hide: function(){
+    this.$el.removeClass('active');
+  },
 
-    initialize: function () {
-      this.listenTo(this.model, 'change:user', this.render);
-      this.listenTo(this.model, 'showHeader', this.show);
-      this.listenTo(this.model, 'hideHeader', this.hide);
-    },
+  render: function () {
+    this.$el.html( this.template(this.model.toJSON()) );
+    return this.$el;
+  }
 
-    show: function(){
-      this.$el.addClass('active');
-    },
-
-    hide: function(){
-      this.$el.removeClass('active');
-    },
-
-    render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
-      return this.$el;
-    }
-
-  });
-
-})();
+});

@@ -1,20 +1,17 @@
-/*global haunt, $*/
-
-
-window.haunt = {
-  Models: {},
-  Collections: {},
-  Views: {},
-  Routers: {},
-  init: function () {
-    'use strict';
-    this.app = new this.Models.App();
-    this.appView = new this.Views.AppView({ model: this.app });
-  }
-};
+var App = require('./models/app');
+var AppView = require('./views/appView');
+var $ = require('jquery');
+var _ = require('underscore');
 
 $(document).ready(function (){
   'use strict';
-  $(document).foundation();
-  haunt.init();
+
+  // $(document).foundation();
+  var app = new App();
+  var appView = new AppView({ model: app });
+
+  _.extend(window, {
+    app: app,
+    appView: appView
+  });
 });

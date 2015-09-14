@@ -1,26 +1,7 @@
-/*global haunt, Backbone*/
+var Backbone = require('backbone');
 
-haunt.Models = haunt.Models || {};
+module.exports = Backbone.Model.extend({
 
-(function () {
-  'use strict';
+  initialize: function() {},
 
-  haunt.Models.Page = Backbone.Model.extend({
-
-    url: '',
-
-    initialize: function() {
-    },
-
-    defaults: {
-    },
-
-    validate: function(attrs, options) {
-    },
-
-    parse: function(response, options)  {
-      return response;
-    }
-  });
-
-})();
+});

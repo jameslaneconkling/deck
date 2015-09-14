@@ -16,8 +16,6 @@
     "strict": true,
     "jquery": true,
     "globals": {
-        "haunt": true,
-        "bbwebclient": true,
         "_": false,
         "Backbone": false,
         "JST": false,

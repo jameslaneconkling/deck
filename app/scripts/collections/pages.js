@@ -1,14 +1,8 @@
-/*global haunt, Backbone*/
+var Backbone = require('backbone');
+var Page = require('../models/page');
 
-haunt.Collections = haunt.Collections || {};
+module.exports = Backbone.Collection.extend({
 
-(function () {
-  'use strict';
+  model: Page
 
-  haunt.Collections.Pages = Backbone.Collection.extend({
-
-    model: haunt.Models.Page
-
-  });
-
-})();
+});
