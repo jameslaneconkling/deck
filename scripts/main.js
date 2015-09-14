@@ -197,7 +197,7 @@ module.exports = Backbone.View.extend({
     },
     {
       template: require('../templates/pages/page1.hbs'),
-      backgroundColor: '#80DBFF'
+      backgroundColor: '#AFC'
     },
     {
       template: require('../templates/pages/page2.hbs'),
