@@ -17,6 +17,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 var _ = require('underscore');
+var ghPages = require('gulp-gh-pages');
 
 
 var customOpts = {
@@ -103,3 +104,8 @@ gulp.task('serve', function(){
 gulp.task('build', ['browserify', 'sass', 'images', 'move']);
 
 gulp.task('default', ['build', 'serve', 'watch']);
+
+gulp.task('deploy', ['build'], function(){
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
+})
