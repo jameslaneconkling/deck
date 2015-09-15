@@ -197,7 +197,7 @@ module.exports = Backbone.View.extend({
     },
     {
       template: require('../templates/pages/page1.hbs'),
-      backgroundColor: '#AFC'
+      backgroundColor: '#80DBFF'
     },
     {
       template: require('../templates/pages/page2.hbs'),
@@ -222,6 +222,7 @@ module.exports = Backbone.View.extend({
   events: {},
 
   initialize: function (){
+    // console.log('asdfasdf')
     // render headerView, footerView, and bodyView
     this.headerView = new HeaderView({ model: this.model });
     this.footerView = new FooterView({ model: this.model });
@@ -358,7 +359,6 @@ module.exports = Backbone.View.extend({
   className: 'animate',
 
   initialize: function () {
-    console.log('asdfasdfasdf')
     this.listenTo(this.model, 'change:user', this.render);
     this.listenTo(this.model, 'showHeader', this.show);
     this.listenTo(this.model, 'hideHeader', this.hide);
