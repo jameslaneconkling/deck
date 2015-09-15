@@ -99,7 +99,7 @@ gulp.task('watch', function(){
 
   gulp.watch(['./app/*.{html,txt}'], ['move', reload]);
 
-  gulp.watch(['./app/scripts/**/*.js'], ['browserify', reload]);
+  gulp.watch(['./app/scripts/**/*.{js,hbs}'], ['browserify', reload]);
 });
 
 gulp.task('serve', function(){
