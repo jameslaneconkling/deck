@@ -36,7 +36,7 @@ module.exports = Backbone.Model.extend({
   initialize: function() {
     this.pages = new Pages();
     this.set('org', 'Adequate Design Studios');
-    this.set('user', 'Terence Mckenna');
+    this.set('user', 'Horatio');
 
     // fraction of the window size to trigger page breakpoint
       // 0: top; 0.5: middle; 1: bottom
@@ -86,7 +86,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.org) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.org); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</a></strong><br>Project</div>\n  </div>\n  <div class=\"columns small-4\">\n    <ul class=\"inline-list right animate\">\n      <li><a href=\"#\">Contact</a></li>\n      <li><a href=\"#\">Hipster</a></li>\n    </ul>\n  </div>\n</div>\n";
+    + "</a></strong><br>Project</div>\n  </div>\n  <div class=\"columns small-4\">\n    <ul class=\"inline-list right animate\">\n      <li><a href=\"#\">De</a></li>\n      <li><a href=\"#\">cK</a></li>\n    </ul>\n  </div>\n</div>\n";
   return buffer;
   });
 
@@ -116,7 +116,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row v-height-full\">\n  <div class=\"col12 v-align-center\">\n\n    <h2 class=\"text-center\">COVER</h2>    \n    \n  </div>\n</div>\n";
+  return "<div class=\"row v-height-full\">\n  <div class=\"columns large-12 hide-small-only v-align-center\">\n\n    <h2 class=\"text-center\">Framework</h2>\n    <p class=\"text-center quiet\"> -- scroll -- </p>\n\n  </div>\n</div>\n";
   });
 
 },{"hbsfy/runtime":26}],9:[function(require,module,exports){
@@ -128,7 +128,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row v-height-full\">\n  <div class=\"col12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 1</h2>\n    \n  </div>\n</div>\n\n";
+  return "<div class=\"row v-height-full\">\n  <div class=\"columns large-12 v-align-center\">\n\n    <p>Deck is a single page app design framework with scroll-based navigation.</p>\n    <p>Look Mom, no <a href=\"http://bost.ocks.org/mike/scroll/\">scroll jacking</a>.</p>\n    <p>View the code <a href=\"https://github.com/jameslaneconkling/deck\">here</a>.</p>\n\n  </div>\n</div>\n\n";
   });
 
 },{"hbsfy/runtime":26}],10:[function(require,module,exports){
@@ -140,7 +140,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row v-height-full\">\n  <div class=\"col12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 2</h2>\n    \n  </div>\n</div>\n\n";
+  return "<div class=\"row v-height-full\">\n  <div class=\"columns large-12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 2</h2>\n\n  </div>\n</div>\n\n";
   });
 
 },{"hbsfy/runtime":26}],11:[function(require,module,exports){
@@ -152,7 +152,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row v-height-full\">\n  <div class=\"col12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 3</h2>\n    \n  </div>\n</div>\n\n";
+  return "<div class=\"row v-height-full\">\n  <div class=\"columns large-12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 3</h2>\n\n  </div>\n</div>\n\n";
   });
 
 },{"hbsfy/runtime":26}],12:[function(require,module,exports){
@@ -164,7 +164,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row v-height-full\">\n  <div class=\"col12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 4</h2>\n    \n  </div>\n</div>\n\n";
+  return "<div class=\"row v-height-full\">\n  <div class=\"columns large-12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 4</h2>\n\n  </div>\n</div>\n\n";
   });
 
 },{"hbsfy/runtime":26}],13:[function(require,module,exports){
@@ -176,7 +176,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row v-height-full\">\n  <div class=\"col12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 5</h2>\n    \n  </div>\n</div>\n\n";
+  return "<div class=\"row v-height-full\">\n  <div class=\"columns large-12 v-align-center\">\n\n    <h2 class=\"text-center\">Page 5</h2>\n\n  </div>\n</div>\n\n";
   });
 
 },{"hbsfy/runtime":26}],14:[function(require,module,exports){
