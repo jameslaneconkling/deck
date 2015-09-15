@@ -1,31 +1,32 @@
 'use strict';
-
-require('dotenv').load();
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var watchify = require('watchify');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var gutil = require('gulp-util');
-var sourcemaps = require('gulp-sourcemaps');
-var gulpif = require('gulp-if');
-var changed = require('gulp-changed');
-var uglify = require('gulp-uglify');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var imagemin = require('gulp-imagemin');
-var _ = require('underscore');
-var ghPages = require('gulp-gh-pages');
+var gulp           = require('gulp');
+var browserSync    = require('browser-sync');
+var reload         = browserSync.reload;
+// var watchify       = require('watchify');
+var browserify     = require('browserify');
+var source         = require('vinyl-source-stream');
+var buffer         = require('vinyl-buffer');
+var gutil          = require('gulp-util');
+var sourcemaps     = require('gulp-sourcemaps');
+var gulpif         = require('gulp-if');
+var changed        = require('gulp-changed');
+var uglify         = require('gulp-uglify');
+var sass           = require('gulp-sass');
+var autoprefixer   = require('gulp-autoprefixer');
+var imagemin       = require('gulp-imagemin');
+var _              = require('underscore');
+var ghPages        = require('gulp-gh-pages');
 
 
+var ENV;
 var customOpts = {
   entries: ['./app/scripts/main.js'],
   debug: true
 };
-var opts = _.assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
+// var opts = _.assign({}, watchify.args, customOpts);
+
+var b = browserify(customOpts);
+// var b = watchify(browserify(opts));
 
 function bundle() {
   return b.bundle()
@@ -33,10 +34,10 @@ function bundle() {
     .pipe(source('main.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe( gulpif(process.env.NODE_ENV === 'production', uglify().on('error', gutil.log)) )
+      .pipe( gulpif(ENV === 'production', uglify().on('error', gutil.log)) )
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./build/scripts'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe( gulpif(ENV !== 'production', browserSync.reload({ stream: true })) );
 }
 
 // pre-bundle transforms
@@ -57,7 +58,7 @@ gulp.task('sass', function(){
     .pipe(sourcemaps.write())
     .pipe(autoprefixer({ browsers: ['last 2 version'] }))
     .pipe(gulp.dest('./build/styles'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe( gulpif(ENV !== 'production', browserSync.reload({ stream: true })) );
 });
 
 gulp.task('images', function(){
@@ -65,7 +66,7 @@ gulp.task('images', function(){
     .pipe(changed('./build/images')) // Ignore unchanged files
     .pipe(imagemin())
     .pipe(gulp.dest('./build/images'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe( gulpif(ENV !== 'production', browserSync.reload({ stream: true })) );
 });
 
 /****************************************************/
@@ -83,6 +84,16 @@ gulp.task('move', function(){
 /****************************************************/
 // Dev tasks
 /****************************************************/
+gulp.task('dev', function(){
+  // this is a hack, no?
+  ENV = 'development';
+});
+
+gulp.task('production', function(){
+  // this is a hack, no?
+  ENV = 'production';
+});
+
 gulp.task('watch', function(){
   gulp.watch(['./app/styles/**/*.{scss,sass}'], ['sass', reload]);
 
@@ -95,7 +106,11 @@ gulp.task('serve', function(){
   browserSync({
     server: { baseDir: 'build' }
   });
+});
 
+gulp.task('gh-pages', function(){
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
 });
 
 /****************************************************/
@@ -103,9 +118,6 @@ gulp.task('serve', function(){
 /****************************************************/
 gulp.task('build', ['browserify', 'sass', 'images', 'move']);
 
-gulp.task('default', ['build', 'serve', 'watch']);
+gulp.task('default', ['dev', 'build', 'serve', 'watch']);
 
-gulp.task('deploy', ['build'], function(){
-  return gulp.src('./build/**/*')
-    .pipe(ghPages());
-})
+gulp.task('deploy', ['production', 'build', 'gh-pages']);

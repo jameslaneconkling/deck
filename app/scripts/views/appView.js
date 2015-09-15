@@ -40,6 +40,7 @@ module.exports = Backbone.View.extend({
   events: {},
 
   initialize: function (){
+    // console.log('asdfasdf')
     // render headerView, footerView, and bodyView
     this.headerView = new HeaderView({ model: this.model });
     this.footerView = new FooterView({ model: this.model });
