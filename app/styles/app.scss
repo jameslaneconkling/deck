@@ -44,9 +44,7 @@ a {
     text-decoration: underline;
   }
 
-:focus{
-  outline-color: #FFA3A3;
-}
+.quiet { color: $quiet; }
 
 
 /*******************/
@@ -54,6 +52,13 @@ a {
 /*******************/
 h1,h2,h3 {
   font-weight: 200;
+}
+
+p {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 200;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -103,10 +108,12 @@ header {
   }
   header li a {
     color: #FFF;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
   }
   header.active li a,
   header:hover li a{
-    color: #333 ;
+    color: #333;
+    text-shadow: none;
   }
 
 #app {
@@ -145,6 +152,7 @@ footer {
   height: 62px;
   background-color: #EEE;
   font-size: 0.6rem;
+  line-height: 0.8rem;
   padding: 4px 0;
   border-top: 1px solid #CCC;
   z-index: 1;
@@ -160,6 +168,9 @@ footer {
     transform: translateY(-50%);
   }
   footer ul { opacity: 0; }
+  footer a {
+    color: #888;
+  }
   footer.active,
   footer:hover {
     opacity: 1;
@@ -180,4 +191,5 @@ footer {
   background-image: url('../images/alberto-korda.jpg');
   background-size: cover;
   background-position: 50% 14%;
-}
+  }
+
